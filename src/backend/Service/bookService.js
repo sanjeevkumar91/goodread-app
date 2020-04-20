@@ -19,7 +19,9 @@ const getBooks = async (searchQuery, pageNo) => {
 
 const searchBooks = async (searchQuery, pageNo) => {
   const xmlResponse = await getBooks(searchQuery, pageNo)
-  const parser = new xml2js.Parser({ explicitArray: false })
+  const parser = new xml2js.Parser({
+    explicitArray: false
+  })
   const parsedJsonResponse = await parser.parseStringPromise(xmlResponse.data)
   const searchResponse = parsedJsonResponse.GoodreadsResponse.search
   const bookResults = searchResponse.results.work
@@ -27,7 +29,11 @@ const searchBooks = async (searchQuery, pageNo) => {
     const {
       books_count,
       average_rating,
-      best_book: { title, author, image_url },
+      best_book: {
+        title,
+        author,
+        image_url
+      },
     } = book
     return {
       imageUrl: image_url,
