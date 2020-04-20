@@ -17,4 +17,6 @@ describe('GoodReads App', () => {
     expect(response.body.results).toEqual(bookResponse)
     done()
   })
+
+  //TODO: for now test is not ending due to app is open, need to fix this issue
 })
