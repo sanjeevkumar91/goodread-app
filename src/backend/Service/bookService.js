@@ -35,10 +35,13 @@ const searchBooks = async (searchQuery, pageNo) => {
         image_url
       },
     } = book
+    const averageRating = typeof average_rating === 'string' ?
+      average_rating :
+      average_rating['_'] ? average_rating['_'] : JSON.stringify(average_rating)
     return {
       imageUrl: image_url,
       booksCount: books_count._,
-      averageRating: average_rating,
+      averageRating,
       title,
       author: author.name,
     }

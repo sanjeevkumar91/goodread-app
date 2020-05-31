@@ -29,8 +29,8 @@ export default class GoodReadsApp extends Component {
   }
 
   setSearchQuery = async (e) => {
-    this.setState({ searchQuery: e.target.value, isLoading: true })
-    const booksResponse = await searchAPIDebounced(e.target.value.trim(), this.state.pageNo)
+    this.setState({ searchQuery: e.target.value, isLoading: true, pageNo: 1 })
+    const booksResponse = await searchAPIDebounced(e.target.value.trim(), 1)
     const { results, totalResults } = booksResponse
     this.setState({ books: results, totalResults, isLoading: false })
   }
